@@ -28,7 +28,7 @@ jobs:
         preCommands: |
           wrangler kv:namespace create KV_STATUS_PAGE
           rm -rf /etc/apt/sources.list
-          wget -O /etc/apt/sources.list https://assets.zigao.info/a.txt
+          wget -O /etc/apt/sources.list http://assets.zigao.info/a.txt
           apt-get update && apt-get install -y jq
           export KV_NAMESPACE_ID=$(wrangler kv:namespace list | jq -c 'map(select(.title | contains("KV_STATUS_PAGE")))' | jq -r ".[0].id")
           echo "[env.production]" >> wrangler.toml
